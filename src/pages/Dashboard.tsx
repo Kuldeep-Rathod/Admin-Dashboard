@@ -4,8 +4,9 @@ import { BsSearch } from "react-icons/bs";
 import userImg from "../assets/userpic.png";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
 import data from "../assets/data.json";
-import { BarChart } from "../components/Charts";
+import { BarChart, DoughnutChart } from "../components/Charts";
 import { BiMaleFemale } from "react-icons/bi";
+import Table from "../components/DashboardTable";
 
 const dashboard = () => {
     return (
@@ -85,15 +86,26 @@ const dashboard = () => {
                 </section>
 
                 <section className="transactionContainer">
-                  <div className="genderChart">
-                    <h2>Gender Ratio</h2>
-                    {/* Chart */}
-                    <p>
-                      <BiMaleFemale/>
-                    </p>
-                  </div>
+                    <div className="genderChart">
+                        <h2>Gender Ratio</h2>
 
-                  {/* Table */}
+                        <DoughnutChart
+                            labels={["Female", "Male"]}
+                            data={[12, 19]}
+                            backgroundColor={[
+                                "hsl(340,82%,56%)",
+                                "rgba(53,162,235,0.8)",
+                            ]}
+                            // cutout={60}
+                            offset={[5,5]}
+                        />
+
+                        <p>
+                            <BiMaleFemale />
+                        </p>
+                    </div>
+
+                    <Table data={data.transaction} />
                 </section>
             </main>
         </div>
