@@ -1,6 +1,6 @@
 import AdminSidebar from "../components/AdminSidebar"
 
-function Transaction() {
+const Transaction = () => {
   return (
     <div className="adminContainer">
       <AdminSidebar/>
@@ -10,3 +10,4 @@ function Transaction() {
 }
 
 export default Transaction
+

@@ -1,6 +1,6 @@
 import AdminSidebar from "../components/AdminSidebar"
 
-function Product() {
+const Product = () => {
   return (
     <div className="adminContainer">
       <AdminSidebar/>
