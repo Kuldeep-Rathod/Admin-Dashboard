@@ -110,10 +110,12 @@ const Products = () => {
     return (
         <div className="adminContainer">
             <AdminSidebar />
-            <main>{Table()}</main>
-            <Link to="/admin/product/add" className="createProductBtn">
-                <FaPlus />
-            </Link>
+            <main className="productPage">
+                {Table()}
+                <Link to="/admin/product/add" className="createProductBtn">
+                    <FaPlus />
+                </Link>
+            </main>
         </div>
     );
 };

@@ -1,4 +1,8 @@
-.dashboardProductBox {
+.productPage{
+
+  overflow-y: auto;
+
+  .dashboardProductBox {
     background-color: white;
     padding: 2rem;
     overflow: auto;
@@ -18,3 +22,4 @@
       opacity: 0.8;
     }
   }
+}
