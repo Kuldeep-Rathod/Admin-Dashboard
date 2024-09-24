@@ -1,24 +1,43 @@
-import { useTable, Column, TableOptions } from "react-table";
+import { HiSortAscending, HiSortDescending } from "react-icons/hi";
+import {
+    useTable,
+    Column,
+    TableOptions,
+    useSortBy,
+    usePagination,
+} from "react-table";
 
 function TableHOC<T extends Object>(
     columns: Column<T>[],
     data: T[],
     containerClassname: string,
-    heading: string
+    heading: string,
+    showPagination: boolean = false
 ) {
     return function HOC() {
         const options: TableOptions<T> = {
             columns,
             data,
+            initialState: {
+                pageSize: 5,
+            },
         };
 
         const {
             getTableProps,
             getTableBodyProps,
             headerGroups,
-            rows,
+            page,
             prepareRow,
-        } = useTable(options);
+            nextPage,
+            previousPage,
+            canNextPage,
+            canPreviousPage,
+            pageCount,
+            state:{
+                pageIndex
+            }
+        } = useTable(options, useSortBy, usePagination);
 
         return (
             <div className={containerClassname}>
@@ -29,15 +48,28 @@ function TableHOC<T extends Object>(
                         {headerGroups.map((headerGroups) => (
                             <tr {...headerGroups.getHeaderGroupProps()}>
                                 {headerGroups.headers.map((column) => (
-                                    <th {...column.getHeaderProps()}>
-                                        {column.render("Header")}
+                                    <th
+                                        {...column.getHeaderProps(
+                                            column.getSortByToggleProps()
+                                        )}
+                                    >
+                                        {column.render("Header")}{" "}
+                                        {column.isSorted && (
+                                            <span>
+                                                {column.isSortedDesc ? (
+                                                    <HiSortDescending />
+                                                ) : (
+                                                    <HiSortAscending />
+                                                )}
+                                            </span>
+                                        )}
                                     </th>
                                 ))}
                             </tr>
                         ))}
                     </thead>
                     <tbody {...getTableBodyProps()}>
-                        {rows.map((row) => {
+                        {page.map((row) => {
                             prepareRow(row);
 
                             return (
@@ -52,6 +84,23 @@ function TableHOC<T extends Object>(
                         })}
                     </tbody>
                 </table>
+
+                {showPagination && (
+                    <div className="tablePagination">
+                        <button
+                            disabled={!canPreviousPage}
+                            onClick={previousPage}
+                        >
+                            Prev
+                        </button>
+                        <span>
+                            {`Page ${pageIndex + 1} of ${pageCount}`}
+                        </span>
+                        <button disabled={!canNextPage} onClick={nextPage}>
+                            Next
+                        </button>
+                    </div>
+                )}
             </div>
         );
     };

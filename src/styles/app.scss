@@ -1,5 +1,6 @@
 @import "mixin";
 @import "dashboard";
+@import "products";
 
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -101,9 +102,10 @@ a {
             }
             a {
                 text-decoration: none;
-                background-color: rgba(44, 104, 255, 0.455);
-                color: rgba(44, 104, 255);
-                padding: 0.25rem 0.5rem;
+                background-color: rgba(0, 115, 255);
+                // color: rgba(44, 104, 255);
+                color: rgb(255, 255, 255);
+                padding: 0.4rem 0.7rem;
                 border-radius: 10px;
             }
             button {
@@ -127,6 +129,24 @@ a {
             &:last-child {
                 border-right: none;
             }
+        }
+    }
+}
+
+.tablePagination {
+    @include flex;
+    padding: 2rem;
+    > button {
+        padding: 0.5rem 1rem;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        cursor: pointer;
+        background-color: rgba(0, 115, 255);
+        color: white;
+        &:disabled {
+            background-color: rgba(0, 115, 255, 0.1);
+            cursor: not-allowed;
         }
     }
 }

@@ -34,7 +34,7 @@ const DivOne = ({ location }: { location: Location }) => (
                 Icon={RiDashboardFill}
             />
             <Li
-                url="/admin/product"
+                url="/admin/products"
                 text="Product"
                 location={location}
                 Icon={RiShoppingBag3Fill}
@@ -116,7 +116,7 @@ const Li = ({ url, text, location, Icon }: LiProps) => (
     <li
         style={{
             backgroundColor: location.pathname.includes(url)
-                ? "rgba(0,115,255,0.1"
+                ? "rgba(0,115,255,0.1)"
                 : "white",
         }}
     >
