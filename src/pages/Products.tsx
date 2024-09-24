@@ -111,10 +111,10 @@ const Products = () => {
         <div className="adminContainer">
             <AdminSidebar />
             <main className="productPage">
-                {Table()}
-                <Link to="/admin/products/new" className="createProductBtn">
-                    <FaPlus />
-                </Link>
+                    {Table()}
+                    <Link to="/admin/products/new" className="createProductBtn">
+                        <FaPlus />
+                    </Link>
             </main>
         </div>
     );

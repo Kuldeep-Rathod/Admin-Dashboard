@@ -1,6 +1,7 @@
 @import "mixin";
 @import "dashboard";
 @import "products";
+@import "customers";
 
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -92,7 +93,8 @@ a {
         }
 
         td {
-            padding: 1rem;
+            // padding: 0.5rem 1rem 0.5rem 1rem;
+            padding: 0.7rem;
 
             img {
                 width: 4rem;

@@ -83,7 +83,9 @@ const Transaction = () => {
     return (
         <div className="adminContainer">
             <AdminSidebar />
-            <main>{Table()}</main>
+            <main>
+                <div className="customerPageContainer">{Table()}</div>
+            </main>
         </div>
     );
 };
