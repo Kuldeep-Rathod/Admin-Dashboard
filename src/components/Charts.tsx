@@ -13,7 +13,7 @@ import {
     LineElement,
     Filler,
 } from "chart.js";
-import { Bar, Doughnut, Pie } from "react-chartjs-2";
+import { Bar, Doughnut, Line, Pie } from "react-chartjs-2";
 
 ChartJS.register(
     CategoryScale,
@@ -193,4 +193,72 @@ export const PieChart = ({
     };
 
     return <Pie data={pieChartData} options={pieChartOptions} />;
+};
+
+//--------------------------Line Chart----------------------------
+
+interface LineChartProps {
+    data: number[];
+    label: string;
+    backgroundColor: string;
+    borderColor: string;
+    labels?: string[];
+}
+
+export const LineChart = ({
+    data,
+    label,
+    backgroundColor,
+    borderColor,
+    labels = months,
+}: LineChartProps) => {
+    const options: ChartOptions<"line"> = {
+        responsive: true,
+        maintainAspectRatio: false,
+        animation: {
+            duration: 1000, // Specify the duration of the animation in milliseconds
+            easing: "easeOutBack", // You can choose different easing options
+        },
+        plugins: {
+            legend: {
+                display: false,
+            },
+            title: {
+                display: true,
+            },
+        },
+
+        scales: {
+            y: {
+                beginAtZero: true,
+                grid: {
+                    display: false,
+                },
+            },
+            x: {
+                grid: {
+                    display: false,
+                },
+            },
+        },
+    };
+
+    const lineChartData: ChartData<"line", number[], string> = {
+        labels,
+        datasets: [
+            {
+                fill: true,
+                data,
+                label,
+                backgroundColor,
+                borderColor,
+            },
+        ],
+    };
+
+    return (
+        <div style={{ width: "100%", height: "465px" }}>
+            <Line options={options} data={lineChartData} />
+        </div>
+    );
 };
