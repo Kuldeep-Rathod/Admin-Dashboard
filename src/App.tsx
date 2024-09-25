@@ -7,8 +7,15 @@ const Customers = lazy(() => import("./pages/Customers"));
 const Transaction = lazy(() => import("./pages/Transaction"));
 const Products = lazy(() => import("./pages/Products"));
 const NewProduct = lazy(() => import("./pages/management/NewProduct"));
-const ProductManagement = lazy(() => import("./pages/management/ProductManagement"));
-const TransactionManagement = lazy(() => import("./pages/management/TransactionManagement"));
+const ProductManagement = lazy(
+    () => import("./pages/management/ProductManagement")
+);
+const TransactionManagement = lazy(
+    () => import("./pages/management/TransactionManagement")
+);
+const BarCharts = lazy(() => import("./pages/charts/BarCharts"));
+const PieCharts = lazy(() => import("./pages/charts/PieCharts"));
+const LineCharts = lazy(() => import("./pages/charts/LineCharts"));
 
 function App() {
     return (
@@ -23,13 +30,25 @@ function App() {
                         element={<Transaction />}
                     />
                     {/* Charts */}
+                    <Route path="/admin/chart/bar" element={<BarCharts />} />
+                    <Route path="/admin/chart/pie" element={<PieCharts />} />
+                    <Route path="/admin/chart/line" element={<LineCharts />} />
 
                     {/* Apps */}
 
                     {/* Management */}
-                    <Route path="/admin/products/new" element={<NewProduct />} />
-                    <Route path="/admin/products/:id" element={<ProductManagement />} />
-                    <Route path="/admin/transaction/:id" element={<TransactionManagement />} />
+                    <Route
+                        path="/admin/products/new"
+                        element={<NewProduct />}
+                    />
+                    <Route
+                        path="/admin/products/:id"
+                        element={<ProductManagement />}
+                    />
+                    <Route
+                        path="/admin/transaction/:id"
+                        element={<TransactionManagement />}
+                    />
                 </Routes>
             </Suspense>
         </Router>
