@@ -18,7 +18,7 @@
         }
     }
 
-    .productManagementContainer{
+    .productManagementContainer {
         padding: 2rem;
     }
 }
@@ -28,41 +28,53 @@
         grid-template-columns: 1fr !important;
     }
 
-    .searchBar{
-      margin-left: 3rem;
+    .searchBar {
+        margin-left: 3rem;
     }
 }
 
 @media screen and (width<= 600px) {
+    .adminContainer {
+        .productPage {
+            .createProductBtn {
+                position: fixed;
+                right: 3rem;
+                top: 3rem;
+            }
+        }
+    }
     .productManagementContainer {
-      flex-direction: column;
-      align-items: center;
-      padding: 0;
-      > section {
-        max-width: 400px;
-      }
+        flex-direction: column;
+        align-items: center;
+        padding: 0;
+        > section {
+            max-width: 400px;
+        }
     }
 
-  
     .chartContainer {
-      padding: 0;
-      > h1 {
-        margin: 0;
-        text-align: center;
-      }
+        padding: 0;
+        > h1 {
+            margin: 2rem;
+            text-align: center;
+        }
+        > section {
+            margin: 8rem auto;
+        }
+    }
+
+    .dashboardAppContainer
+    
+    {
+      padding: 3rem;
       > section {
-        margin: 8rem auto;
-      }
-    }
-  
-    .dashboardAppContainer > section {
-      .couponForm,
-      .stopwatch {
-        display: flex;
-        flex-direction: column;
-      }
-      .stopwatch {
-        align-items: center;
-      }
-    }
-  }
+        .couponForm,
+        .stopwatch {
+            display: flex;
+            flex-direction: column;
+        }
+        .stopwatch {
+            align-items: center;
+        }
+    }}
+}
