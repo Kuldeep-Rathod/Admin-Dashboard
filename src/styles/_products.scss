@@ -37,7 +37,7 @@
 .productManagementContainer {
     @include flex(row, center, unset);
     padding: 3rem;
-    overflow-y: auto;
+    // overflow-y: auto;
     &::-webkit-scrollbar {
         display: none;
     }

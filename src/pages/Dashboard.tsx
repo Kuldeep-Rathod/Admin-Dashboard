@@ -14,13 +14,18 @@ const dashboard = () => {
             <AdminSidebar />
             <main className="dashboard">
                 <div className="bar">
-                    <BsSearch />
-                    <input
-                        type="text"
-                        placeholder="Search for data, users, docs"
-                    />
-                    <FaRegBell />
-                    <img src={userImg} alt="" />
+                    <div className="searchBar">
+                        <BsSearch />
+                        </div>
+
+                        <input
+                            type="text"
+                            placeholder="Search for data, users, docs"
+                        />
+                    <div>
+                        <FaRegBell />
+                        <img src={userImg} alt="" />
+                    </div>
                 </div>
 
                 <section className="widgetContainer">
@@ -97,7 +102,7 @@ const dashboard = () => {
                                 "rgba(53,162,235,0.8)",
                             ]}
                             // cutout={60}
-                            offset={[5,5]}
+                            offset={[5, 5]}
                         />
 
                         <p>

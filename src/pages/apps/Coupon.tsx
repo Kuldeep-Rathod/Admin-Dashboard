@@ -1,6 +1,5 @@
 import { FormEvent, useEffect, useState } from "react";
 import AdminSidebar from "../../components/AdminSidebar";
-import { BiCode } from "react-icons/bi";
 
 const allLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const allNumbers = "0123456789";

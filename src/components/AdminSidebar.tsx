@@ -8,20 +8,64 @@ import { AiFillFileText } from "react-icons/ai";
 import { IoIosPeople } from "react-icons/io";
 import { IconType } from "react-icons";
 import { FaChartBar, FaGamepad } from "react-icons/fa";
-import { FaChartLine, FaChartPie, FaStopwatch } from "react-icons/fa6";
+import { FaAngleLeft, FaChartLine, FaChartPie, FaStopwatch } from "react-icons/fa6";
+import { useEffect, useState } from "react";
+import { HiMenu } from "react-icons/hi";
 
 function AdminSidebar() {
     const location = useLocation();
 
+    const [showModal, setSowModal] = useState(false);
+    const [phoneActive, setPhoneActive] = useState(window.innerWidth < 1100);
+
+    const resizeHandler = () => {
+        setPhoneActive(window.innerWidth < 1100);
+    }
+
+    useEffect(() => {
+        window.addEventListener("resize", resizeHandler);
+        return () => window.removeEventListener("resize", resizeHandler);
+    })
+
     return (
-        <aside>
-            <h2>
-                <a href="/admin/dashboard">Logo.</a>
-            </h2>
-            <DivOne location={location} />
-            <DivTwo location={location} />
-            <DivThree location={location} />
-        </aside>
+        <>
+            {phoneActive && (
+                <button id="hamburger" onClick={() => setSowModal(!showModal)}>
+                    <HiMenu />
+                </button>
+            )}
+
+            <aside
+                style={
+                    phoneActive
+                        ? {
+                              width: "20rem",
+                              height: "100vh",
+                              position: "fixed",
+                              top: 0,
+                              left: showModal ? 0 : "-20rem",
+                              zIndex: 10,
+                              transition: "all 0.5s ease-in-out",
+                          }
+                        : {}
+                }
+            >
+                <div className="logoHamburger">
+                    <h2>
+                        <a href="/admin/dashboard">Logo.</a>
+                    </h2>
+
+                    {phoneActive && (
+                        <button className="hello" onClick={() => setSowModal(!showModal)}>
+                            <FaAngleLeft />
+                        </button>
+                    )}
+                </div>
+                <DivOne location={location} />
+                <DivTwo location={location} />
+                <DivThree location={location} />
+            </aside>
+        </>
     );
 }
 
