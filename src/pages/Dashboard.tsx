@@ -1,7 +1,7 @@
 import { FaRegBell } from "react-icons/fa6";
 import AdminSidebar from "../components/AdminSidebar";
 import { BsSearch } from "react-icons/bs";
-import userImg from "../assets/userpic.png";
+import userImg from "../assets/images/userpic.png";
 import { HiTrendingDown, HiTrendingUp } from "react-icons/hi";
 import data from "../assets/data.json";
 import { BarChart, DoughnutChart } from "../components/Charts";
